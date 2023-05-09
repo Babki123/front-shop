@@ -1,0 +1,16 @@
+
+$bgColor:#564AFF;  
+
+.productManagementt{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    table{
+ 
+        margin:20vw;
+        
+    }
+}
+thead{
+    background-color: $bgColor;
+}

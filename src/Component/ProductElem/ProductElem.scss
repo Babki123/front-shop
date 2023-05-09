@@ -1,0 +1,11 @@
+tr {
+    border : 2px solid grey;
+    margin-bottom: 5px;
+    box-shadow: 2px 5px 5px grey;
+    height: 50px;
+    .category{
+        background-color: red;
+        border-radius: 10;
+        text-align: right;
+    }
+}

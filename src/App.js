@@ -1,25 +1,35 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useContext, useEffect } from 'react';
+import { ProductContext } from './Context/ProductProvider';
+import ProductManagement from './Component/ProductManagement/ProductManagement';
+import { Outlet } from 'react-router-dom';
+import Navigation from './Component/Nav/Navigation.js';
+
 
 function App() {
+
+  const [state,dispatch] = useContext(ProductContext);
+  //appell au chargement de l'application pour charger les données de l'API
+  useEffect(() =>{
+    //appel fakestore API pour la liste des produits 
+    fetch('https://fakestoreapi.com/products')
+      .then(res=>res.json())
+      .then(json=>{dispatch({type:"SET_PRODUCT", payload : json});console.log(json) ;/*console.log(state)*/ });
+
+  } , [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navigation/>
+        <div>
+        
+        <Outlet/>
+        </div>
+      
     </div>
   );
 }
+
+
 
 export default App;

@@ -1,0 +1,48 @@
+$bgColor:#564AFF;  
+nav{
+  padding: 10px;
+  font-weight: bold;
+  font-size: large;
+
+  button{
+    text-decoration: none;
+    background-color: $bgColor;
+    border: 0;
+    color:white;
+    font-size: large;
+   
+  }
+    .title{
+        margin: 50px;
+        display: flex;
+        flex-direction: row;
+    }
+    ul{
+        padding-left:5px;
+        border-bottom: 2px solid gray ;
+        border-left: 5px none ;
+        margin-bottom: 10px;
+    
+    li {
+
+     
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+    a {
+        outline: none;
+        text-decoration: none;
+        padding: 2px 1px 0;
+        color: #ffffff;
+        margin-top : 5px;
+        margin-bottom: 5px;
+
+      }
+      .active{
+        list-style:decimal;
+        background-color: red;
+      }
+
+}
+}
+}
