@@ -21,11 +21,7 @@ function App() {
   return (
     <div className="App">
         <Navigation/>
-        <div>
-        
-        <Outlet/>
-        </div>
-      
+        <Outlet className="Display"/>
     </div>
   );
 }

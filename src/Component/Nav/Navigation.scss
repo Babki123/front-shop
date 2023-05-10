@@ -22,13 +22,23 @@ nav{
         border-bottom: 2px solid gray ;
         border-left: 5px none ;
         margin-bottom: 10px;
+        
     
     li {
-
-     
+      list-style:none;
       margin-top: 20px;
       margin-bottom: 20px;
+      
+      .active{
+        display:list-item;
+        list-style:disc;
+        background-color: red;
+       }
 
+    &.inactive{
+      list-style: none;
+    }
+  
     a {
         outline: none;
         text-decoration: none;
@@ -38,11 +48,9 @@ nav{
         margin-bottom: 5px;
 
       }
-      .active{
-        list-style:decimal;
-        background-color: red;
-      }
 
 }
 }
+     
+
 }

@@ -12,8 +12,8 @@ const Navigation = () => {
         
             <h3> Dashboard</h3>
             <ul>
-                <li><NavLink  className={ ({isActive})=> {console.log(isActive);return  isActive ? 'active ':' r'}} to={"/products"} > Product Management </NavLink></li>
-                <li><NavLink  to={`/osef`}>Employee Management</NavLink></li>
+                <li><NavLink  className={ ({isActive})=> {console.log(isActive);return  isActive ? 'active ':'inactive'}} to={"/products"} > Product Management </NavLink></li>
+                <li><NavLink   className={ ({isActive})=> {console.log(isActive);return  isActive ? 'active ':'inactive'}} to={`/osef`}>Employee Management</NavLink></li>
             </ul>
 
             <button>Logout</button>

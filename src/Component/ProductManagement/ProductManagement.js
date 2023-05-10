@@ -22,7 +22,7 @@ function ProductManagement(){
                     <tr>
                         <td> Product name</td>
                         <td> Category</td>
-                        <td>Price</td>
+                        <td> Price</td>
                         <td> Price (including VAT)</td>
                     </tr>
                 </thead>

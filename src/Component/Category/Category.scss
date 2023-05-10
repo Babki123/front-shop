@@ -1,21 +1,25 @@
 p {
     display:inline;
-    padding:5px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding:10px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: none;
-    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius : 16px;
+
+  }
+  .whiteFront{
+    color:white;
   }
   .bg-green{
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; /* Green */ 
   }
   .bg-orange{
     background-color:orange;
+    
   }
 
   .bg-grey{

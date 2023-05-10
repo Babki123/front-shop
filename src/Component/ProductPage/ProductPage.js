@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Produit from "../../Data/TaxCalc";
 import "./ProductPage.scss"
 import { useState } from "react";
-
+import Category from "../Category/Category.js"
 const ProductPage = () =>{
    
     const product = useLoaderData();
@@ -35,7 +35,16 @@ const ProductPage = () =>{
              .then(json=>{console.log(json);})
 
     }
-
+    //Verification du prix pour activation/desactivation du boutton
+        const isPriceEqual =() => {
+            if(price == product.price){
+                console.log("true")
+                return "true";
+            }else{
+                console.log("false")
+                return "false";
+            }
+        }
     //Mise a jour du prix sur le changement de l'inpunt
         const handleChange = (e) => {
                  setPrice(e.target.value);
@@ -44,28 +53,27 @@ const ProductPage = () =>{
 
     return(
      <article aria-label="Presentation du produit" className="productPage">
-            <h1>{product.title}</h1>
-
-            <img src= {product.image}/>
-        <section className="description">
-            <div>
-            <section className="description">
-                    <h3> Description</h3>
+        <h1>{product.title}</h1>
+        <div className="container">
+            <img className="picture" src= {product.image} alt={product.title}/>
+                <div  className="description">  
+                    <h3 className="$bgColor"> Description</h3>
                     <p> {product.description}</p>
-                </section>
-                <section className="category"> 
-                    <h3> Category</h3>
-                    <p className="category"> {product.category} </p>
-                </section>
-            </div>
-
-                <form action="" >
-                        <label htmlFor="price"> Price</label>
+                </div>
+                <div  className="category">
+                    <h3 className="$bgColor"> Category</h3>
+                     <p> <Category category={product.category}/>  </p>
+                </div>
+                <form className="collumn" action="" >
+                        <label> <h3 className="$bgColor"> Price</h3> 
                         <input type="number" id="price" onChange={handleChange} placeholder={product.price} value={price}  />
+                        </label>
                         <p> {calc.addTaxe()} €( VAT Inclus)</p>
-                         <button onClick={(event) => { updatePrice(event)}} > Update Product </button>
+                        <button onClick={(event) => { updatePrice(event)}} disable={ price== product.price ? "false" : "true" } > Update Product </button>
+                        
                 </form>
-           </section>
+            </div>
+         
          </article>
     )
 }
