@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./ProductElem.scss";
 import Produit from "../../Data/TaxCalc";
+import Category from "../Category/Category";
 
 //Affichage des elements du tableau
 const ProductElem = ({elem,id}) => {
@@ -16,7 +17,7 @@ const ProductElem = ({elem,id}) => {
         return (
         <tr  onClick={()=>{navigateToId(id)}}  > 
             <td> {elem.title}</td>
-            <td className="category"> {elem.category}</td>
+            <td> <Category category={elem.category}/></td>
             <td> {elem.price}</td>
             <td> { tax.addTaxe() } </td>
         </tr>                 
