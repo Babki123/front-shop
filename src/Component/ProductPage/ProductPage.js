@@ -16,8 +16,8 @@ const ProductPage = () =>{
 
     //Verification du prix pour activation/desactivation du boutton
          const isPriceEqual = () => {
+            //Conversion en string du a la valeur du prix dans le champs
             if(price.toString() === product.price.toString()){
-                console.log("ah true");
                setDisable(true);
             }else{
                 setDisable(false);
@@ -35,25 +35,18 @@ const ProductPage = () =>{
      //empêcher le rechargement de la page
          event.preventDefault()
        
-         // Call API pour Update le prix 
+         // Call API pour Update le prix (pas de changement cote API)
           await fetch('https:fakestoreapi.com/products/'+id,{
               method:"PUT",
                 body:JSON.stringify(
-                 {  
-                    id : product.id,
-                      title: product.title,
-                      price: price,
-                      description: product.description,
-                      image: product.image,
-                      category: product.category
-                  }
+                 {  ...product,price:price}
               )
-          }).then(res=>res.json())
+          }).then((res)=>{res.json()
+            //mise a jour du prix dans le state
+            dispatch({type:"UPDATE_PRICE", payload :{...product,price:price}})
+            })
              //Update la valeur dans la state et affichage de la response du serveur
              .then(json=>{console.log(json);})
-             //rappel du produit apres maj
-             console.log(id)
-             await ProductPageLoader({params:{id:product.id}});
 
     }
     //Mise a jour de la page avec la modification du prix pour contourner l'asynchronicite des states

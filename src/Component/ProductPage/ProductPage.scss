@@ -1,4 +1,63 @@
 $color: #564AFF;
+
+
+
+@media screen and (max-width: 900px)  {
+    .productPage{
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        h1{
+            text-align: center;
+            width: 80vw;
+            height: min-content;
+            color: $color;
+            font-size: 40px;
+            margin-top:50px;
+            margin-bottom: 50px;
+        }   
+        .container{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            .description{
+                display:flex;
+                flex-direction:column;
+                justify-content: flex-start;
+                    p{
+                        width: 90vw;
+                        display: inline-block;
+                        text-align: left;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                       
+                    }
+                }
+        }
+
+        img{
+
+            //border: 1px solid lightgray;
+            padding:100px;
+            box-shadow: 0px 0px 1px gray;
+            margin-right: 10vw;
+            width: 60vw;
+            height: auto;
+        }
+    }
+
+}
+@media screen and (min-width: 901px) and  (max-width : 424px){
+.container{
+    align-items: flex-start;
+}
+}
+
+@media screen and (min-width: 901px){
 .productPage{
     display:flex;
     flex-direction:column;
@@ -31,6 +90,9 @@ $color: #564AFF;
             justify-content: flex-start;
             p{
                 text-align: left;
+                padding-left: 10px;
+                padding-right: 10px;
+                display: inline-block;
             }
         }
         .category{
@@ -72,6 +134,16 @@ $color: #564AFF;
         grid-template-columns: 1fr 1fr;
         justify-items: center;
     }
+}}
+@media screen and (max-width :424px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+                   
+
 }
 button {
     background-color: $color; /* Green */
@@ -96,3 +168,4 @@ button {
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     /* Lowering the shadow */
   }
+

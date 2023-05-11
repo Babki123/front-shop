@@ -1,21 +1,43 @@
-$bgColor:#564AFF;  
+$bgColor:#564AFF;
+$displayMenu : block;
+
 @media screen and (max-width: 900px){
     //transforme le menu en drop down menu pour interface mobile 
+    nav{
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 10px;
+      padding-right: 10px;
+    
+    .content-drop-down{
+      padding: 10px;
+    }
     .dropdown-content {
-      display: none;
+      width: max-content;
+      display: var(--displayMenu);
       position: absolute;
       background-color: #f1f1f1;
-      min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
     }
+    .active{
+      background-color: var(--bgColor);
+     }
+    }
 }
+
+@media screen and (min-width: 901px){
 nav{
+  display: flex;
+  flex-direction: column;
   background-color: $bgColor;
   padding: 30px;
   font-weight: bold;
   font-size: large;
 
+  .content-drop-down{
+    display:none;
+  }
   button{
     text-decoration: none;
     background-color: $bgColor;
@@ -58,6 +80,5 @@ nav{
 
 }
 }
-     
-
+}
 }

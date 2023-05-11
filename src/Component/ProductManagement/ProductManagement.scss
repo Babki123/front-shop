@@ -6,6 +6,8 @@ $bgColor:#564AFF;
     flex-direction: column;
     justify-content: center;
     margin-left:10vw;
+    margin-right: 10vw;
+    margin-bottom: 10vh;
     h1{
         text-align: center;
         justify-content: center;
@@ -16,9 +18,12 @@ $bgColor:#564AFF;
     table{
         border-radius: 10px;
         border-collapse: separate;
-        border-spacing: 0em 1em;    
+        border-spacing: 0em;  
+        overflow-y: scroll;
+       tbody{
+        overflow-y:scroll;
+       }
         td{
-            
             padding: 10px;
             margin: 10px;
         }
@@ -29,4 +34,10 @@ $bgColor:#564AFF;
 thead{
     border-radius: 15px;
     background-color: $bgColor;
+}
+@media screen and (max-width:901px){
+    .productManagement{
+        margin-left: 0px;
+        margin-right: 0px;;
+    }
 }
