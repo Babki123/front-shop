@@ -1,27 +1,46 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Produit from "../../Data/TaxCalc";
 import "./ProductPage.scss"
-import { useState } from "react";
+import { useState,useEffect, useContext } from "react";
 import Category from "../Category/Category.js"
+import { ProductContext } from "../../Context/ProductProvider";
+
+
 const ProductPage = () =>{
-   
+    const [state,dispatch] = useContext(ProductContext);
     const product = useLoaderData();
-    const calc = new Produit(product.price)
+    const calc = new Produit(product.price);
      const {id} = useParams();
      const [price, setPrice] = useState(product.price);
+     const [disable,setDisable] = useState("");
+
+    //Verification du prix pour activation/desactivation du boutton
+         const isPriceEqual = () => {
+            if(price.toString() === product.price.toString()){
+                console.log("ah true");
+               setDisable(true);
+            }else{
+                setDisable(false);
+            }
+        }
+        
+    //Mise a jour du prix sur le changement de l'inpunt
+        const handleChange = (e) => {
+                setPrice(e.target.value)
+            }
+
 
     // //Fonction pour changer le prix du produit
     const updatePrice = async(event) => {
-        event.preventDefault();
-    
-         //empêcher le rechargement de la page
+     //empêcher le rechargement de la page
          event.preventDefault()
        
          // Call API pour Update le prix 
-          fetch('https:fakestoreapi.com/products/'+id,{
+          await fetch('https:fakestoreapi.com/products/'+id,{
               method:"PUT",
-             body:JSON.stringify(
-                 {
+                body:JSON.stringify(
+                 {  
+                    id : product.id,
                       title: product.title,
                       price: price,
                       description: product.description,
@@ -29,27 +48,18 @@ const ProductPage = () =>{
                       category: product.category
                   }
               )
-          })
-             .then(res=>res.json())
+          }).then(res=>res.json())
              //Update la valeur dans la state et affichage de la response du serveur
              .then(json=>{console.log(json);})
+             //rappel du produit apres maj
+             console.log(id)
+             await ProductPageLoader({params:{id:product.id}});
 
     }
-    //Verification du prix pour activation/desactivation du boutton
-        const isPriceEqual =() => {
-            if(price == product.price){
-                console.log("true")
-                return "true";
-            }else{
-                console.log("false")
-                return "false";
-            }
-        }
-    //Mise a jour du prix sur le changement de l'inpunt
-        const handleChange = (e) => {
-                 setPrice(e.target.value);
-              //comparaison du prix avec la valeur saisie pour activer/desactiver l'update du prix
-            }
+    //Mise a jour de la page avec la modification du prix pour contourner l'asynchronicite des states
+    useEffect( () =>{
+        isPriceEqual();
+    },[price])
 
     return(
      <article aria-label="Presentation du produit" className="productPage">
@@ -62,15 +72,15 @@ const ProductPage = () =>{
                 </div>
                 <div  className="category">
                     <h3 className="$bgColor"> Category</h3>
-                     <p> <Category category={product.category}/>  </p>
+                      <Category category={product.category}/> 
                 </div>
-                <form className="collumn" action="" >
-                        <label> <h3 className="$bgColor"> Price</h3> 
-                        <input type="number" id="price" onChange={handleChange} placeholder={product.price} value={price}  />
+                <form className="collumn "  >
+                        <label> 
+                        <h3 className="$bgColor"> Price</h3> 
+                        <input type="number" id="price" onChange={(event) => { handleChange(event)}} placeholder={product.price} value={price}  />
                         </label>
-                        <p> {calc.addTaxe()} €( VAT Inclus)</p>
-                        <button onClick={(event) => { updatePrice(event)}} disable={ price== product.price ? "false" : "true" } > Update Product </button>
-                        
+                        <p> Price (including VAT) : {calc.addTaxe(price)}€</p>
+                        <button className="button" onClick={(event) => { updatePrice(event)}} disabled={ disable } > Update Product </button>      
                 </form>
             </div>
          
@@ -81,7 +91,6 @@ const ProductPage = () =>{
 export const ProductPageLoader = async ({params}) => {
    const { id } = params;
    const res =  await fetch('https://fakestoreapi.com/products/'+id);
-
     return res
 }
 

@@ -22,8 +22,17 @@ class Produit {
         this.tax = tax;
     }
     
-    addTaxe(){
-        return this.price + (this.price*this.tax);
+    addTaxe(price = this.price ){
+        if(typeof(price) != typeof(0.0)){
+          price =   parseFloat(price)
+        }
+        var taxPrice = parseFloat(price + (price*this.tax)).toFixed(2);
+        if (!isNaN(taxPrice)){
+            return taxPrice;
+        }else{
+            return 0;
+        }
+        
     }
 }
 

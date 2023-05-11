@@ -8,6 +8,7 @@ $color: #564AFF;
     .container{
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
+        align-items: start;
         h3{
             color:$color;
         }
@@ -20,7 +21,6 @@ $color: #564AFF;
             //border: 1px solid lightgray;
             padding:100px;
             box-shadow: 0px 0px 1px gray;
-            aspect-ratio: auto;
             width: 20vw;
             height: auto;
         }
@@ -36,6 +36,10 @@ $color: #564AFF;
         .category{
             grid-column: 3;
             flex-direction: column;
+            margin-left: 0;
+            p{
+                
+            }
         }
     }
 
@@ -58,18 +62,37 @@ $color: #564AFF;
         }
         h3{
          color : $color;
-            form{
-                display: flex;
-                padding: 0px;
-                margin: 0px;
-                justify-content: flex-start;
-            }
-    }
-    form{
-        display: block;
-        width: 100vw;
-    }
+        }
+
 
     justify-content: center;
     }
+    form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
 }
+button {
+    background-color: $color; /* Green */
+    color:white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  button :enabled {
+    background-color: $color; /* Green */
+  }
+  button:disabled{
+    background-color: grey;
+  }
+  button:active{
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+  }

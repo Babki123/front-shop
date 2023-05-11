@@ -14,7 +14,7 @@ const Category = ({category}) => {
         }
     }
     return(
-        <p className={" whiteFront pill "+checkCategory()}>
+        <p className={"whiteFront pill "+checkCategory()}>
                 {category}
         </p>
     )

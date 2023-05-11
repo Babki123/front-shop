@@ -18,8 +18,8 @@ const ProductElem = ({elem,id}) => {
         <tr  onClick={()=>{navigateToId(id)}}  > 
             <td> {elem.title}</td>
             <td> <Category category={elem.category}/></td>
-            <td> {elem.price}</td>
-            <td> { tax.addTaxe() } </td>
+            <td> {elem.price} €</td>
+            <td> { tax.addTaxe() } € </td>
         </tr>                 
         )
       

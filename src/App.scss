@@ -37,11 +37,18 @@ $bgColor:#564AFF;
 $font : 'Roboto', sans-serif;
 .App {
   font-family: $font;
+  height: 100vh;
+  overflow: hidden;
+  .display{
+    margin:0px;
+    padding:0px;
+    overflow-y:scroll ;
+  }
   nav{
     color: white;
     background-color: $bgColor;
     overflow-y: visible;
-
+    
   }
 }
 
@@ -52,7 +59,6 @@ $font : 'Roboto', sans-serif;
     nav{
       display: flex;
       flex-direction: row;
-      height: 100vh;
     }
   }
 }
@@ -62,11 +68,9 @@ $font : 'Roboto', sans-serif;
     flex-direction:row;
     nav{
       background-color: $bgColor;
+      height: 100vh;
     }
-    .display{
-      margin-left: 20vw;
-      padding: 10vw;;
-    }
+
   }
 }
 

@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.scss';
 import { useContext, useEffect } from 'react';
 import { ProductContext } from './Context/ProductProvider';
-import ProductManagement from './Component/ProductManagement/ProductManagement';
 import { Outlet } from 'react-router-dom';
 import Navigation from './Component/Nav/Navigation.js';
 
@@ -15,13 +13,17 @@ function App() {
     //appel fakestore API pour la liste des produits 
     fetch('https://fakestoreapi.com/products')
       .then(res=>res.json())
-      .then(json=>{dispatch({type:"SET_PRODUCT", payload : json});console.log(json) ;/*console.log(state)*/ });
+      .then(json=>{dispatch({type:"SET_PRODUCT", payload : json});
+                  console.log(json); });
 
   } , [])
   return (
     <div className="App">
         <Navigation/>
-        <Outlet className="Display"/>
+      <div className="display">
+      <Outlet />
+      </div>
+        
     </div>
   );
 }

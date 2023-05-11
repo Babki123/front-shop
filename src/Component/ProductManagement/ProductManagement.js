@@ -7,12 +7,7 @@ import "./ProductManagement.scss";
 function ProductManagement(){
     //mise en place du state
     const [state,dispatch] = useContext(ProductContext);
-
-  
-    
-    
     useEffect(()=>{
-        console.log(state);
     },[])
     return(
         <article className="productManagement">
