@@ -8,6 +8,7 @@ import ProductPage, { ProductPageLoader } from "../ProductPage/ProductPage";
 import ProductManagement from "../ProductManagement/ProductManagement";
 import App from "../../App";
 import ErrorPage from "../ErrorElement/ErrorElement";
+import EmployeeManagement from "../EmployeeManagement/EmployeManagement";
   export   const router = createBrowserRouter([
         {
             path: "/",
@@ -23,8 +24,10 @@ import ErrorPage from "../ErrorElement/ErrorElement";
                   {
                     path: "products/:id",
                     element: <ProductPage/>,
-                    loader: ProductPageLoader
-                  }
+                    loader: ProductPageLoader},
+                    {path: "employee",
+                    element: <EmployeeManagement/>,
+                    errorElement: <ErrorPage />},
                 ]
               }
              

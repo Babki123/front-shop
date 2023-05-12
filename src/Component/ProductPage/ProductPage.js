@@ -47,10 +47,8 @@ const ProductPage = () =>{
                    body:JSON.stringify(
                            payload
                  )})
-             .then(res=>{ res.json()})
-                   //Update la valeur dans la state et affichage de la response du serveur
-                   .then(json=> console.log(json))
-               //confirmation du PUT
+                .then(res=>{ res.json()})
+                .then(json=> console.log(json))
                 //mise a jour du produit dans le state
                 dispatch({type:"UPDATE_PRODUCT", payload : payload });
                  }
@@ -62,7 +60,7 @@ const ProductPage = () =>{
     return(
      <article aria-label="Presentation du produit" className="productPage">
         <header >
-        <NavLink className="larger" to="../products">&#8592; </NavLink> 
+        <NavLink className="larger" to="../products"> <img src="/images/arrow.png" className="arrow-icon"/> </NavLink> 
         <h1>{product.title}</h1>
         </header>
         
@@ -79,10 +77,10 @@ const ProductPage = () =>{
                 <form className="collumn "  >
                         <label> 
                         <h3 className="$bgColor"> Price</h3> 
-                        <input type="number" id="price" onChange={(event) => { handleChange(event)}} placeholder={productUsed.price} value={price}  />
+                        <input type="number" id="price" onChange={(event) => { handleChange(event)}} pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" placeholder={productUsed.price} value={price}  />
                         </label>
                         <p> Price (including VAT) : {calc.addTaxe(price)}€</p>
-                        <button className="button" onClick={(event) => { updatePrice(event)}} disabled={ disable } > Update Product </button>      
+                        <button className="button" onClick={(event) => { updatePrice(event)}}  disabled={ disable } > Update Product </button>      
                 </form>
             </div>
          

@@ -1,0 +1,16 @@
+$bgColor: #564AFF;  
+.employe{     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    text-align: center;
+    border-radius: 10px;       
+    li{
+        list-style: none;
+        box-shadow: 0px 1px 1px grey;
+        padding: 10px;
+        margin: 10px;
+    }
+}

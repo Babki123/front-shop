@@ -38,10 +38,7 @@ $color: #564AFF;
                     }
                 }
         }
-
         img{
-
-            //border: 1px solid lightgray;
             padding:100px;
             box-shadow: 0px 0px 1px gray;
             margin-right: 10vw;
@@ -64,11 +61,13 @@ $color: #564AFF;
     flex-wrap: wrap;
     justify-content: flex-start;
     
+
     .container{
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: start;
         justify-items: start;
+        margin-left: 5vw;
         h3{
             color:$color;
         }
@@ -81,7 +80,7 @@ $color: #564AFF;
             padding:100px;
             box-shadow: 0px 0px 1px gray;
             width: 20vw;
-            height: auto;
+            height: 50vh;
         }
 
         .description {
@@ -104,9 +103,20 @@ $color: #564AFF;
             }
         }
     }
+    //direct child of productPage
     header{
         display :flex;
+        justify-content: flex-start;
+        margin-top: 5vh;
+        align-items: center;
+        .arrow-icon{
+            height:50px;
+            color:lightgray;
+            margin-left: 0px;
+            left:0px;
+        }
         a{
+            padding-left:15px;
             text-decoration: none;
             height: min-content;
             color: $color;
@@ -137,9 +147,6 @@ $color: #564AFF;
         h3{
          color : $color;
         }
-
-
-    justify-content: center;
     }
     form{
         display: grid;
@@ -150,6 +157,7 @@ $color: #564AFF;
         }
     }
 }}
+// for the smallest screen 
 @media screen and (max-width :424px){
     .container{
         display: flex;
@@ -160,6 +168,7 @@ $color: #564AFF;
                    
 
 }
+// Universal CSS
 
 button {
     background-color: $color; /* Green */
