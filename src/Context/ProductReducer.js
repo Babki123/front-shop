@@ -11,8 +11,9 @@ const ProductReducer = (state, action) => {
         case "UPADTE_PRICE":
             return state;
         case "UPDATE_PRODUCT":
-            let tempList = [...state.products];
-            console.log(action.payload);
+            let tempList = state;
+            tempList.products[action.payload.id-1]= action.payload;
+            sessionStorage.setItem("products",JSON.stringify(tempList.products))
             return tempList;
         case "SET_PRODUCT":
             console.log(action.payload);

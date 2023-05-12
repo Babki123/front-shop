@@ -11,7 +11,10 @@ function ProductManagement(){
     },[])
     return(
         <article className="productManagement">
+            <header>
             <h1> Product Management </h1>
+            </header>
+
             <table>
                 <thead>
                     <tr>

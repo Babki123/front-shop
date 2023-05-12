@@ -12,16 +12,22 @@ import ErrorPage from "../ErrorElement/ErrorElement";
         {
             path: "/",
             element: <App />,
-            errorElement: <ErrorPage />,
+            
             children:[
-              {path: "products",
-              element: <ProductManagement/>,
-              errorElement: <ErrorPage />},
               {
-                path: "products/:id",
-                element: <ProductPage/>,
-                loader: ProductPageLoader
+                errorElement: <ErrorPage />,
+                children:[
+                  {path: "products",
+                  element: <ProductManagement/>,
+                  errorElement: <ErrorPage />},
+                  {
+                    path: "products/:id",
+                    element: <ProductPage/>,
+                    loader: ProductPageLoader
+                  }
+                ]
               }
+             
             ]
         }
   ]);

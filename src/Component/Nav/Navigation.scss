@@ -1,30 +1,7 @@
 $bgColor:#564AFF;
 $displayMenu : block;
 
-@media screen and (max-width: 900px){
-    //transforme le menu en drop down menu pour interface mobile 
-    nav{
-      align-items: center;
-      justify-content: space-between;
-      padding-left: 10px;
-      padding-right: 10px;
-    
-    .content-drop-down{
-      padding: 10px;
-    }
-    .dropdown-content {
-      width: max-content;
-      display: var(--displayMenu);
-      position: absolute;
-      background-color: #f1f1f1;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    .active{
-      background-color: var(--bgColor);
-     }
-    }
-}
+
 
 @media screen and (min-width: 901px){
 nav{
@@ -35,8 +12,8 @@ nav{
   font-weight: bold;
   font-size: large;
 
-  .content-drop-down{
-    display:none;
+  .mobile-logout{
+    display :none;
   }
   button{
     text-decoration: none;
@@ -82,3 +59,57 @@ nav{
 }
 }
 }
+@media screen and (max-width: 900px){
+  //transforme le menu en drop down menu pour interface mobile 
+  nav{
+    
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+  .desktop-logout{
+    display: none;
+  }
+  .mobile-logout{
+    margin-bottom:0px;
+  }
+  .content-drop-down{
+    padding: 10px;
+  }
+  .dropdown-content {
+    z-index:1;
+    width: 200px;
+    top: 48px;
+    right:0px;
+    display: var(--displayMenu);
+    position: absolute;
+    background-color:lightgrey;
+    .drop-down-item{
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    li{
+      border-bottom: 1px solid gray;
+      padding-bottom:13px;
+      list-style:none;
+      margin-top: 20px;
+      text-align: left;
+      :last-child{
+        margin-bottom: 20px;
+      }
+      .active{
+        background-color: var(--bgColor);
+       }
+    a {
+      
+      text-decoration: none;
+      display: block;
+      }
+
+  }
+
+  }
+  }
+} 
