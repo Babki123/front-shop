@@ -17,6 +17,7 @@ const ProductReducer = (state, action) => {
             return tempList;
         case "SET_PRODUCT":
             console.log(action.payload);
+            sessionStorage.setItem("products",JSON.stringify(action.payload))
             return {...state, products : action.payload}
         default :
         return state;

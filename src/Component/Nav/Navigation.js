@@ -18,9 +18,9 @@ const Navigation = () => {
     return(
         <nav>
             <header className="title">
-            <img src="/images/logo.png" classNAme="logo"/>
+            <img src="/images/logo.png" />
             </header>
-            <h3 className="content-drop-down" aria-control="modal" aria-label="activation du menu sur mobile" onClick={()=>{dropDownMenu()}}> Dashboard</h3>
+            <h3 className="content-drop-down"  aria-label="activation du menu sur mobile" onClick={()=>{dropDownMenu()}}> Dashboard</h3>
             <section className="drop-down-menu">
             <h3 className="content-drop-down mobile-menu"  onClick={()=>{dropDownMenu()}}  > Menu </h3>
             <div className="dropdown-content">

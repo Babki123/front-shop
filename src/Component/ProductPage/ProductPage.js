@@ -9,11 +9,12 @@ import { ProductContext } from "../../Context/ProductProvider";
 const ProductPage = () =>{
     //mise en place du state globale
     const [state,dispatch] = useContext(ProductContext);
+    const sessionStorageProduct = sessionStorage.getItem("products");
     //recuperation des données du loader
     const product =  useLoaderData();
     const {id} = useParams();
     //determiner si on utilise la valeur local ou celle de l'API 
-    const productUsed = state.products == null ? product : state.products[id-1];
+    const [productUsed,setProductUsed] = useState( sessionStorageProduct == null  ? product : JSON.parse(sessionStorageProduct)[id-1]); 
     // classe du calcul des taxes
     const calc = new Produit(productUsed.price);
     //state pour la mise a jour du prix 
@@ -23,16 +24,18 @@ const ProductPage = () =>{
     //Verification du prix pour activation/desactivation du boutton
          const isPriceEqual = () => {
             //Conversion en string du a la valeur du prix dans le champs
-            if(price.toString() === product.price.toString()){
+            if(price.toString() === productUsed.price.toString()){
                setDisable(true);
             }else{
-                setDisable(false);
+                setDisable(false);   
             }
         }
         
     //Mise a jour du prix sur le changement de l'inpunt
         const handleChange = (e) => {
+                //verification du pa
                 setPrice(e.target.value)
+                isPriceEqual();
             }
 
 
@@ -41,26 +44,34 @@ const ProductPage = () =>{
         //empêcher le rechargement de la page
             event.preventDefault()
             const payload = {...product,price:price }
+            
             // Call API pour Update le prix 
-             fetch('https:fakestoreapi.com/products/'+id,{
+             /*fetch('https:fakestoreapi.com/products/'+id,{
                  method:"PUT",
                    body:JSON.stringify(
                            payload
                  )})
-                .then(res=>{ res.json()})
-                .then(json=> console.log(json))
+                .then(res=>res.json())
+                .then(json=> console.log(json)) */
                 //mise a jour du produit dans le state
                 dispatch({type:"UPDATE_PRODUCT", payload : payload });
+                setProductUsed( payload);
+                isPriceEqual()
                  }
     //Mise a jour de la page avec la modification du prix pour contourner l'asynchronicite des states
-    useEffect( () =>{
+    useEffect( () =>{ 
+        if( state.products == null){
+            console.log("it works");
+            dispatch({type:"SET_PRODUCT", action : JSON.parse(sessionStorageProduct) })
+        }
+
         isPriceEqual();
     },[price])
 
     return(
      <article aria-label="Presentation du produit" className="productPage">
         <header >
-        <NavLink className="larger" to="../products"> <img src="/images/arrow.png" className="arrow-icon"/> </NavLink> 
+        <NavLink  className="larger" to="../products"> <img src="/images/arrow.png" className="arrow-icon"/> </NavLink> 
         <h1>{product.title}</h1>
         </header>
         

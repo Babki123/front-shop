@@ -18,7 +18,7 @@ function App() {
       fetch('https://fakestoreapi.com/products')
       .then(res=>res.json())
       .then(json =>{  dispatch({type:"SET_PRODUCT", payload : json});
-                      sessionStorage.setItem("products",JSON.stringify(json));})
+            })
     }else{
       // si oui on recupere les data du localStorage
       dispatch({type:"SET_PRODUCT", payload : JSON.parse(products)})
